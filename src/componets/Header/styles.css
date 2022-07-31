@@ -1,0 +1,26 @@
+.header {
+    width: 100%;
+    background-color: #E4B062;
+    height: 118px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    font-weight: 600;
+    align-items: flex-end;
+}
+
+.out {
+    margin-right: 15px;
+}
+
+.logo {
+    margin-left: 15px;
+}
