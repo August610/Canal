@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Posts } from "../Posts/Posts.jsx";
+import api from "../Utils/api.jsx";
 
 export function Main() {
   //   function randomInteger(min = 5, max = 15) {
@@ -28,30 +29,36 @@ export function Main() {
   }
 
   useEffect(() => {
-      fetch(`https://jsonplaceholder.typicode.com/posts`)
-        .then((response) => response.json())
-        .then((data) => {
-          setCards(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      fetch(`https://jsonplaceholder.typicode.com/photos`)
-        .then((response) => response.json())
-        .then((photos) => {
-          setPhotos(photos);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-        fetch(`https://jsonplaceholder.typicode.com/users`)
-        .then((response) => response.json())
-        .then((users) => {
-          setUsers(users);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+
+    Promise.all([api.getPostsList()])
+      .then(([data]) => {
+        setCards(data);
+        setdataPosts(data)
+      })
+      // fetch(`https://jsonplaceholder.typicode.com/posts`)
+      //   .then((response) => response.json())
+      //   .then((data) => {
+      //     setCards(data);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
+      // fetch(`https://jsonplaceholder.typicode.com/photos`)
+      //   .then((response) => response.json())
+      //   .then((photos) => {
+      //     setPhotos(photos);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
+      //   fetch(`https://jsonplaceholder.typicode.com/users`)
+      //   .then((response) => response.json())
+      //   .then((users) => {
+      //     setUsers(users);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
   }, []);
 
   useEffect(() => {
